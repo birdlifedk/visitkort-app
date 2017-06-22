@@ -1,7 +1,9 @@
 .card {
     margin-top:1.0rem;
     font-size: 10pt;
-    font-family: Segoe UI, Verdana, Geneva, Tahoma, sans-serif;    
+    font-family: Segoe UI, Verdana, sans-serif;
+    width:40%; 
+    float:left;    
 }
 
 .regards {
@@ -49,6 +51,10 @@
 
 .partner {
     margin-top:0.9rem;
+}
+
+.header {
+
 }
 
 .partner a{
