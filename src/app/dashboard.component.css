@@ -1,3 +1,8 @@
 .dashboard {
         font-size: 11pt;
 }
+
+h3, div {
+    font-size:9pt;
+    font-family: Segoe UI, Verdana, sans-serif;    
+}

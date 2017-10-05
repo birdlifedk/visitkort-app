@@ -11,6 +11,8 @@ export class CampaignComponent implements OnInit {
   title = 'Create your signature';
 
   showedit: boolean = false;
+  showexport: boolean = false;
+  htmlexport: string = "";
 
   c: Campaign = {
     id: 1,
@@ -39,6 +41,7 @@ export class CampaignComponent implements OnInit {
   }
 
   viewExample(): void {
+    this.showexport = false;
     this.c= {
     id: 1,
     name: "Birdlife 2017",
@@ -63,23 +66,29 @@ export class CampaignComponent implements OnInit {
   edit(): void {
     this.showedit = true;
     this.c = {
-    id: 1,
-    name: "Birdlife 2017 - Make your own",
-    regards_native: "",
-    sender_name: "",
-    sender_position_native: "",
-    sender_position_english: "",
-    sender_telephone: "",
-    sender_telephone_direct: "",
-    sender_skypeid: "",
-    facebook_id: "",
-    instagram_id: "",
-    youtube_user: "",
-    partner_logo: "",
-    partner_name: "",
-    partner_address: "",
-    partner_zip: "",
-    partner_site_url: ""
+      id: 1,
+      name: "Birdlife 2017 - Make your own",
+      regards_native: "",
+      sender_name: "",
+      sender_position_native: "",
+      sender_position_english: "",
+      sender_telephone: "",
+      sender_telephone_direct: "",
+      sender_skypeid: "",
+      facebook_id: "",
+      instagram_id: "",
+      youtube_user: "",
+      partner_logo: "",
+      partner_name: "",
+      partner_address: "",
+      partner_zip: "",
+      partner_site_url: ""
+    };
   };
+  export(): void {
+    this.showexport = true;
+    let styleElement : string = document.getElementsByTagName('style')[3].innerText;
+    let htmlContent : string = document.getElementById('signature').outerHTML;
+    this.htmlexport = `<html encoding="utf8"><body><style>` + styleElement + `</style>\n` + htmlContent + `</body></html>`;
   };
 }
