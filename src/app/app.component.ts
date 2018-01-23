@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Birdlife\'s mail signature generator';
+  title = 'DOFs e-mail signatur generator';
 }
