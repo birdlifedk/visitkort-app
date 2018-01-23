@@ -1,118 +1,139 @@
 <style>
-.card {
-    margin-top:1.0rem;
-    font-size: 10pt;
-    font-family: Segoe UI, Verdana, sans-serif;
-    width:50%; 
-    float:left;    
-}
+    .card {
+        margin-top: 1.0rem;
+        font-size: 10pt;
+        font-family: Segoe UI, Verdana, sans-serif;
+        width: 50%;
+        float: left;
+    }
 
-.regards {
-    margin-bottom:0.9rem;
-    font-size: 0.9rem;
-}
+    .regards {
+        margin-bottom: 0.9rem;
+        font-size: 0.9rem;
+    }
 
-.light {
-    color: rgb(129,128,121)
-}
-.lighter {
-    color: rgba(129,128,121,0.8)
-}
-.pipe {
-    color: rgb(0,102,158);
-    margin: 0 0.5rem;
-}
-.senderdetails_left {
-    float:left;
-    padding-right:0.9rem;
-    border-right: 1px solid rgb(129,128,121);
-    font-size: 0.9rem;
-    margin-bottom:0.5rem;
-}
+    .light {
+        color: rgb(129, 128, 121)
+    }
 
-.senderdetails_right {
-    float:left;
-    margin-left:0.9rem;
-    font-size: 0.9rem;
-}
+    .lighter {
+        color: rgba(129, 128, 121, 0.8)
+    }
 
-.sendername {
-    font-weight: bold;
-    font-size: 1.0rem;
-}
-.logos {
-    margin-top:0.9rem;
-    width:500px;
-}
+    .pipe {
+        color: rgb(0, 102, 158);
+        margin: 0 0.5rem;
+    }
 
-.logos span{
-    margin:0 0.5rem;
-    height:100px;
-}
+    .senderdetails_left {
+        float: left;
+        padding-right: 0.9rem;
+        border-right: 1px solid rgb(129, 128, 121);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
 
-.partner {
-    margin-top:0.9rem;
-}
+    .senderdetails_right {
+        float: left;
+        margin-left: 0.9rem;
+        font-size: 0.9rem;
+    }
 
-.partner a{
-    color: rgb(0,102,158);
-}
+    .sendername {
+        font-weight: bold;
+        font-size: 1.0rem;
+    }
 
+    .logos {
+        margin-top: 0.9rem;
+        width: 500px;
+    }
+
+    .logos span {
+        margin: 0 0.5rem;
+        height: 100px;
+    }
+
+    .partner {
+        margin-top: 0.9rem;
+    }
+
+    .partner a {
+        color: rgb(0, 102, 158);
+    }
 </style>
-<button (click)="viewExample()">View Example</button><button (click)="edit()">Make your own</button><button (click)="export()">Export</button>
-<div class="header">{{c.id}} - {{c.name}}  </div>    
+<br />
+<button (click)="viewExample()">Vis eksempel</button>
+<button (click)="edit()">Ny formular</button>
+<button (click)="export()">Vis HTML</button>
+<br />
 <hr>
 <div id="editor" class="card" *ngIf="showedit">
-  <div style="margin-bottom:0.9rem;font-size: 0.9rem;" class="regards light"><input [(ngModel)]="c.regards_native" placeholder="regards"></div>
-  <span class="senderdetails_left">
-      <div class="sendername light"><input [(ngModel)] = "c.sender_name" placeholder="sender name"></div>
-      <div class="light"><input [(ngModel)] = "c.sender_position_native" placeholder="sender's position"></div>
-      <div class="lighter"><input [(ngModel)] = "c.sender_position_english" placeholder="sender's position (english)"></div>
+    <div style="margin-bottom:0.9rem;font-size: 0.9rem;" class="regards light"></div>
+    <span class="senderdetails_left">
+        <div class="light">
+            <input [(ngModel)]="c.sender_name" size="50" placeholder="Navn">
+        </div>
+        <div class="light">
+
+            <input [(ngModel)]="c.sender_position_native" size="50" placeholder="Stilling">
+        </div>
+        <div class="lighter">
+            <input [(ngModel)]="c.sender_position_english" size="50" placeholder="Stilling (Engelsk)">
+        </div>
+        <div class="light">
+            <input [(ngModel)]="c.sender_telephone_direct" placeholder="Direkte telefonnummer">
+        </div>
+        <div class="light">
+            <input [(ngModel)]="c.sender_skypeid" size="50" placeholder="Skype ID">
+        </div>
     </span>
-    <span class="senderdetails_right">
-      <div class="light">Tel <input [(ngModel)] = "c.sender_telephone" placeholder="partner telephone number"></div>
-      <div class="light">Dir <input [(ngModel)] = "c.sender_telephone_direct" placeholder="direct telephone number"></div>
-      <div class="light">Skype <input [(ngModel)] = "c.sender_skypeid" placeholder="skype id"></div>
-      <div class="light">
-        <span>https://www.facebook.com/<input [(ngModel)] = "c.facebook_id" placeholder="your facebook id"></span>
-        <span>https://www.instagram.com/<input [(ngModel)] = "c.instagram_id" placeholder="your instagram id"></span>
-        <span>https://www.youtube.com/user/<input [(ngModel)] = "c.youtube_user" placeholder="your youtube user name"></span>
-    </div>
-  </span>
-<div class="logos">
-  <span><img style="height:100%;width:auto" src="/assets/small/DOF_80pct.jpg"/></span>
-  <!-- <span><input [(ngModel)] = "c.partner_logo" placeholder="input your logo as base 64 encoded text"></span> -->
-</div>
-<div class="partner">
-    <input [(ngModel)] = "c.partner_name" placeholder="parter name"><span class="pipe">|</span><input [(ngModel)] = "c.partner_address" placeholder="partner address"><span class="pipe">|</span><input [(ngModel)] = "c.partner_zip" placeholder="partner zip code and city"><span class="pipe">|</span><input [(ngModel)] = "c.partner_site_url" placeholder="partner site url">
-</div>      
 </div>
 <div style="margin-top:1.0rem;font-size: 10pt;font-family: Segoe UI, Verdana, sans-serif;width:50%;float:left;" id="signature">
-  <div style="margin-bottom:0.9rem;font-size: 0.9rem;color: rgb(129,128,121)">{{c.regards_native}} / Best regards</div>
+    <div style="margin-bottom:0.9rem;font-size: 0.9rem;color: rgb(129,128,121)">Venlig hilsen / Best regards</div>
     <span style="float:left;padding-right:0.9rem;border-right: 1px solid rgb(129,128,121);font-size: 0.9rem;margin-bottom:0.5rem;">
-      <div style="font-weight: bold;font-size: 1.0rem;color: rgb(129,128,121)" id="sender_name">{{c.sender_name}}</div>
-      <div style="color: rgb(129,128,121)">{{c.sender_position_native}}</div>
-      <div style="color: rgba(129,128,121,0.8)">{{c.sender_position_english}}</div>
+        <div style="font-weight: bold;font-size: 1.0rem;color: rgb(129,128,121)" id="sender_name">{{c.sender_name}}</div>
+        <div style="color: rgb(129,128,121)">{{c.sender_position_native}}</div>
+        <div style="color: rgba(129,128,121,0.8)">{{c.sender_position_english}}</div>
     </span>
     <span style="float:left;margin-left:0.9rem;font-size: 0.9rem;">
-      <div style="color: rgb(129,128,121)">Tel {{c.sender_telephone}}</div>
-      <div style="color: rgb(129,128,121)">Dir {{c.sender_telephone_direct}}</div>
-      <div style="color: rgb(129,128,121)">Skype {{c.sender_skypeid}}</div>
-      <div style="color: rgb(129,128,121)">
-        <span><a href="https://www.facebook.com/{{c.facebook_id}}"><img src="https://integration.dof.dk/assets/small/fb.png"/></a></span>
-        <span><a href="https://www.instagram.com/{{c.instagram_id}}"><img style="width:22px;height:22px;margin-top:-2px" src="https://integration.dof.dk/assets/small/instagram.png"/></a></span>
-        <span><a href="https://www.youtube.com/user/{{c.youtube_user}}"><img src="https://integration.dof.dk/assets/small/youtube.png"/></a></span>
+        <div style="color: rgb(129,128,121)">Tel +45 3328 3800</div>
+        <div style="color: rgb(129,128,121)" *ngIf="c.sender_telephone_direct">Dir {{c.sender_telephone_direct}}</div>
+        <div style="color: rgb(129,128,121)" *ngIf="c.sender_skypeid">Skype {{c.sender_skypeid}}</div>
+        <div style="color: rgb(129,128,121)">
+            <span>
+                <a href="https://www.facebook.com/birdlifedk"><img src="https://integration.dof.dk/assets/small/fb.png" /></a>
+            </span>
+            <span>
+                <a href="https://www.instagram.com/danmarksfugle"><img src="https://integration.dof.dk/assets/small/instagram.png" /></a>
+            </span>
+            <span>
+                <a href="https://www.youtube.com/user/DOFBirdlife"><img src="https://integration.dof.dk/assets/small/youtube.png" /></a>
+            </span>
+        </div>
+    </span>
+    <div style="clear:both; width: 1px; height: 1px;"></div>
+    <div style="color: rgb(129,128,121)" class="logos">
+        <span>
+            <img style="height:100px;width:auto" src="https://integration.dof.dk/assets/small/Birdlife.jpg" />
+        </span>
+        <span>
+            <img style="height:100px;width:auto" src="https://integration.dof.dk/assets/small/DOF_80pct.jpg" />
+        </span>
     </div>
-  </span>
-  <div style="color: rgb(129,128,121)" class="logos">
-    <span><img style="height:100px;width:auto" src="https://integration.dof.dk/assets/small/Birdlife.jpg"/></span>
-    <span><img style="height:100px;width:auto" src="https://integration.dof.dk/assets/small/DOF_80pct.jpg"/></span>
-  </div>
-  <div style="color: rgb(129,128,121)" class="partner">
-      <span style="color: rgb(129,128,121)">{{c.partner_name}}</span><span style="color: rgb(0,102,158);margin: 0 0.5rem;">|</span><span style="color: rgba(129,128,121,0.8)">{{c.partner_address}}</span><span style="color: rgb(0,102,158);margin: 0 0.5rem;" class="pipe">|</span><span style="color: rgba(129,128,121,0.8)">{{c.partner_zip}}</span><span style="color: rgb(0,102,158);margin: 0 0.5rem;">|</span><span style="color: rgba(129,128,121,0.8)"><a target="_blank" href="http://{{c.partner_site_url}}">{{c.partner_site_url}}</a></span>
-  </div>
+    <div style="color: rgb(129,128,121)" class="partner">
+        <span style="color: rgb(129,128,121)">DOF/Birdlife Denmark</span>
+        <span style="color: rgb(0,102,158);margin: 0 0.5rem;">|</span>
+        <span style="color: rgba(129,128,121,0.8)">Vesterbrogade 140</span>
+        <span style="color: rgb(0,102,158);margin: 0 0.5rem;" class="pipe">|</span>
+        <span style="color: rgba(129,128,121,0.8)">1620 København V</span>
+        <span style="color: rgb(0,102,158);margin: 0 0.5rem;">|</span>
+        <span style="color: rgba(129,128,121,0.8)">
+            <a target="_blank" href="https://www.dof.dk">www.dof.dk</a>
+        </span>
+    </div>
 </div>
-<div style="width:100%;height:250px"  *ngIf="showexport">
-  <textarea style="width:100%;height:250px" id="exporthtml">{{htmlexport}}</textarea>
-  <label for="exporthtml">Copy the content of this textarea to your specific email program's signature editor. Make sure to send in html format</label>
-</div> 
+<div style="width:100%;height:250px" *ngIf="showexport">
+    <textarea style="width:100%;height:250px" id="exporthtml">{{htmlexport}}</textarea>
+    <label for="exporthtml">Kopier indholdet af denne tekstboks til dit email-programs signatur værktøj. Husk at indstille signaturen som HTML format.</label>
+</div>
