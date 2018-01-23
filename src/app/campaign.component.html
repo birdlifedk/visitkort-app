@@ -3,8 +3,11 @@
         margin-top: 1.0rem;
         font-size: 10pt;
         font-family: Segoe UI, Verdana, sans-serif;
-        width: 50%;
+        min-width: 33%;
+        max-width: 49%;
         float: left;
+        border-right: 1px solid rgb(129, 128, 121);
+        margin-right: 30px;
     }
 
     .regards {
@@ -20,11 +23,6 @@
         color: rgba(129, 128, 121, 0.8)
     }
 
-    .pipe {
-        color: rgb(0, 102, 158);
-        margin: 0 0.01rem;
-    }
-
     .senderdetails_left {
         float: left;
         padding-right: 0.9rem;
@@ -38,28 +36,6 @@
         font-size: 0.9rem;
         border-left: 1px solid rgb(129, 128, 121);
     }
-
-    .sendername {
-        font-weight: bold;
-        font-size: 1.0rem;
-    }
-
-    .logos {
-        margin-top: 0.9rem;
-    }
-
-    .logos span {
-        margin: 0 0.5rem;
-        height: 100px;
-    }
-
-    .partner {
-        margin-top: 0.0rem;
-    }
-
-    .partner a {
-        color: rgb(0, 102, 158);
-    }
 </style>
 <br />
 <button (click)="viewExample()">Vis eksempel</button>
@@ -67,6 +43,7 @@
 <button (click)="export()">Vis HTML</button>
 <br />
 <hr>
+<!-- Form -->
 <div id="editor" class="card" *ngIf="showedit">
     <div style="margin-bottom:0.9rem;font-size: 0.9rem;" class="regards light"></div>
     <span class="senderdetails_left">
@@ -86,51 +63,80 @@
         <div class="light">
             <input [(ngModel)]="c.sender_skypeid" size="50" placeholder="Skype ID">
         </div>
+        <br/>
+        <br/>
+        <button (click)="copy_text()">Kopier til udklipsholder</button>
+        <br/>
+        <br/>
+        <div *ngIf="showcopyalert">Signatur kopieret</div>
     </span>
+
 </div>
-<div style="margin-top:1.0rem;font-size: 10pt;font-family: Segoe UI, Verdana, sans-serif;width:50%;float:left;" id="signature">
-    <div style="margin-bottom:0.9rem;font-size: 0.9rem;color: rgb(129,128,121)">Venlig hilsen / Best regards</div>
-    <span style="float:left;margin-right:0.9rem;font-size: 0.9rem;margin-bottom:0.5rem;">
-        <div style="font-weight: bold;font-size: 1.0rem;color: rgb(129,128,121)" id="sender_name">{{c.sender_name}}</div>
-        <div style="color: rgb(129,128,121)">{{c.sender_position_native}}</div>
-        <div style="color: rgba(129,128,121,0.8)">{{c.sender_position_english}}</div>
-        <div style="color: rgb(129,128,121); margin-top: 1rem" >
-            <img style="height:100px" src="https://integration.dof.dk/assets/small/birdlife_dof_50.png" />
-        </div>
-    </span>
-    <span style="float:left;padding-left:0.9rem;font-size: 0.9rem; border-left: 1px solid rgb(129,128,121);">
-        <div style="color: rgb(129,128,121)">Tel +45 3328 3800</div>
-        <div style="color: rgb(129,128,121)" *ngIf="c.sender_telephone_direct">Dir {{c.sender_telephone_direct}}</div>
-        <div style="color: rgb(129,128,121)" *ngIf="c.sender_skypeid">Skype {{c.sender_skypeid}}</div>
-        <div style="color: rgb(129,128,121); padding-top:0.4rem">
-            <span>
-                <a href="https://www.facebook.com/birdlifedk"><img src="https://integration.dof.dk/assets/small/fb.png" /></a>
-            </span>
-            <span>
-                <a href="https://www.instagram.com/danmarksfugle"><img src="https://integration.dof.dk/assets/small/instagram.png" /></a>
-            </span>
-            <span>
-                <a href="https://www.youtube.com/user/DOFBirdlife"><img src="https://integration.dof.dk/assets/small/youtube.png" /></a>
-            </span>
-        </div>
-    </span>
-    <div style="clear:both; width: 1px; height: 1px;"></div>
-    <div style="color: rgb(129,128,121)" class="logos">
-        <img style="height:100px;width:auto" src="https://integration.dof.dk/assets/small/birdlife_dof.png" />
-    </div>
-    <div style="color: rgb(129,128,121)" class="partner">
-        <span style="color: rgb(129,128,121)">DOF/Birdlife Denmark</span>
-        <span style="color: rgb(0,102,158);margin: 0 0.5rem;">|</span>
-        <span style="color: rgba(129,128,121,0.8)">Vesterbrogade 140</span>
-        <span style="color: rgb(0,102,158);margin: 0 0.5rem;" class="pipe">|</span>
-        <span style="color: rgba(129,128,121,0.8)">1620 København V</span>
-        <span style="color: rgb(0,102,158);margin: 0 0.5rem;">|</span>
-        <span style="color: rgba(129,128,121,0.8)">
-            <a target="_blank" href="https://www.dof.dk">www.dof.dk</a>
-        </span>
-    </div>
+<!--end Form-->
+<!-- Result -->
+<div style="margin-top:1.0rem;font-size: 10pt;font-family: Segoe UI, Verdana, sans-serif;" id="signature">
+    <table>
+        <tr>
+            <td colspan="3">
+                <div style="margin-bottom:0.9rem;font-size: 0.9rem;color: rgb(129,128,121)">Venlig hilsen / Best regards</div>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top">
+                <span style="float:left;margin-right:0.9rem;font-size: 0.9rem;margin-bottom:0.5rem;">
+                    <div style="font-weight: bold;font-size: 1.0rem;color: rgb(129,128,121)" id="sender_name">{{c.sender_name}}</div>
+                    <div style="color: rgb(129,128,121)">{{c.sender_position_native}}</div>
+                    <div style="color: rgba(129,128,121,0.8)">{{c.sender_position_english}}</div>
+                </span>
+            </td>
+            <td style="border-left: 1px solid rgb(129, 128, 121);">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td style="vertical-align: top">
+                <span style="float:left;padding-left:0.9rem;font-size: 0.9rem;">
+                    <div style="color: rgb(129,128,121)">Tel +45 3328 3800</div>
+                    <div style="color: rgb(129,128,121)" *ngIf="c.sender_telephone_direct">Dir {{c.sender_telephone_direct}}</div>
+                    <div style="color: rgb(129,128,121)" *ngIf="c.sender_skypeid">Skype {{c.sender_skypeid}}</div>
+                    <div style="color: rgb(129,128,121); padding-top:0.4rem">
+                        <a href="https://www.facebook.com/birdlifedk">
+                            <img src="https://integration.dof.dk/assets/small/fb.png" />
+                        </a>
+                        &nbsp;
+                        <a href="https://www.instagram.com/danmarksfugle">
+                            <img src="https://integration.dof.dk/assets/small/instagram.png" />
+                        </a>
+                        &nbsp;
+                        <a href="https://www.youtube.com/user/DOFBirdlife">
+                            <img src="https://integration.dof.dk/assets/small/youtube.png" />
+                        </a>
+                    </div>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div style="color: rgb(129,128,121); margin-top: 1rem">
+                    <img src="https://integration.dof.dk/assets/small/birdlife_dof_115px.png" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div style="color: rgb(129,128,121); clear:both;">
+                    <span style="color: rgb(129,128,121)">DOF/Birdlife Denmark</span>
+                    <span style="color: rgb(0,102,158); margin: 0 0.01rem;">|</span>
+                    <span style="color: rgba(129,128,121,0.8)">Vesterbrogade 140</span>
+                    <span style="color: rgb(0,102,158); margin: 0 0.01rem;">|</span>
+                    <span style="color: rgba(129,128,121,0.8)">1620 København V</span>
+                    <span style="color: rgb(0,102,158); margin: 0 0.01rem;">|</span>
+                    <span style="color: rgba(129,128,121,0.8)">
+                        <a target="_blank" href="https://www.dof.dk">www.dof.dk</a>
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
 <div style="width:100%;height:250px" *ngIf="showexport">
     <textarea style="width:100%;height:250px" id="exporthtml">{{htmlexport}}</textarea>
     <label for="exporthtml">Kopier indholdet af denne tekstboks til dit email-programs signatur værktøj. Husk at indstille signaturen som HTML format.</label>
 </div>
+<!--end Result-->
