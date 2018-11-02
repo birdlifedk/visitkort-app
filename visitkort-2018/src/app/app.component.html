@@ -1,0 +1,133 @@
+<style>
+  .card {
+      margin-top: 1.0rem;
+      font-size: 10pt;
+      font-family: Segoe UI, Verdana, sans-serif;
+      min-width: 33%;
+      max-width: 49%;
+      float: left;
+      border-right: 1px solid rgb(129, 128, 121);
+      margin-right: 30px;
+  }
+
+  .regards {
+      margin-bottom: 0.9rem;
+      font-size: 0.9rem;
+  }
+
+  .light {
+      color: rgb(129, 128, 121)
+  }
+
+  .lighter {
+      color: rgba(129, 128, 121, 0.8)
+  }
+
+  .senderdetails_left {
+      float: left;
+      padding-right: 0.9rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+  }
+
+  .senderdetails_right {
+      float: left;
+      margin-left: 0.9rem;
+      font-size: 0.9rem;
+      border-left: 1px solid rgb(129, 128, 121);
+  }
+</style>
+<br />
+<button (click)="viewExample()">Vis eksempel</button>
+<button (click)="edit()">Ny formular</button>
+<button (click)="export()">Vis HTML</button>
+<br />
+<hr>
+<!-- Form -->
+<div id="editor" class="card" *ngIf="showedit">
+  <div style="margin-bottom:0.9rem;font-size: 0.9rem;" class="regards light"></div>
+  <span class="senderdetails_left">
+      <div class="light">
+          <input [(ngModel)]="card.sender_name" size="50" placeholder="Navn">
+      </div>
+      <div class="light">
+
+          <input [(ngModel)]="card.sender_position_native" size="50" placeholder="Stilling">
+      </div>
+      <div class="lighter">
+          <input [(ngModel)]="card.sender_position_english" size="50" placeholder="Stilling (Engelsk)">
+      </div>
+      <div class="light">
+          <input [(ngModel)]="card.sender_telephone_direct" placeholder="Direkte telefonnummer">
+      </div>
+      <div class="light">
+          <input [(ngModel)]="card.sender_skypeid" size="50" placeholder="Skype ID">
+      </div>
+      <br/>
+      <br/>
+      <button (click)="copy_text()">Kopier til udklipsholder</button>
+      <br/>
+      <br/>
+      <div *ngIf="showcopyalert">Signatur kopieret</div>
+  </span>
+
+</div>
+<!--end Form-->
+<!-- Result -->
+<div style="margin-top:1.0rem;font-size: 10pt;font-family: Segoe UI, Verdana, sans-serif;" id="signature">
+  <table>
+      <tr>
+          <td style="vertical-align: top">
+              <span style="float:left;margin-right:0.9rem;font-size: 0.9rem;margin-bottom:0.5rem;">
+                  <div style="font-weight: bold;font-size: 1.0rem;color: rgb(129,128,121)" id="sender_name">{{card.sender_name}}</div>
+                  <div style="color: rgb(129,128,121)">{{card.sender_position_native}}</div>
+                  <div style="color: rgb(129,128,121)">{{card.sender_position_english}}</div>
+              </span>
+          </td>
+          <td style="border-left: 1px solid rgb(129, 128, 121);">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td style="vertical-align: top">
+              <span style="float:left;padding-left:0.9rem;font-size: 0.9rem;">
+                  <div style="color: rgb(129,128,121)">Tel +45 3328 3800</div>
+                  <div style="color: rgb(129,128,121)" *ngIf="card.sender_telephone_direct">Dir {{card.sender_telephone_direct}}</div>
+                  <div style="color: rgb(129,128,121)" *ngIf="card.sender_skypeid">Skype {{card.sender_skypeid}}</div>
+              </span>
+          </td>
+      </tr>
+      <tr></tr>
+      <tr></tr>
+      <tr>
+          <td colspan="2">
+                  <img src="https://integration.dof.dk/assets/small/birdlife_dof_100px.png" />
+          </td>
+          <td style="vertical-align:top">
+              <div>
+                  <a href="https://www.facebook.com/birdlifedk"><img src="https://integration.dof.dk/assets/small/fb.png" /></a>
+                  &nbsp;
+                  <a href="https://www.instagram.com/danmarksfugle"><img src="https://integration.dof.dk/assets/small/instagram.png" /></a>
+                  &nbsp;
+                  <a href="https://www.youtube.com/user/DOFBirdlife"><img src="https://integration.dof.dk/assets/small/youtube.png" /></a>
+              </div>
+          </td>
+      </tr>
+      <tr>
+          <td colspan="3">
+              <div style="color: rgb(129,128,121); clear:both;">
+                  <span style="color: rgb(129,128,121)">DOF / Birdlife Denmark</span>
+                  <span style="color: rgb(0,102,158); margin: 0 0.01rem;">|</span>
+                  <span style="color: rgba(129,128,121,0.8)">Vesterbrogade 140</span>
+                  <span style="color: rgb(0,102,158); margin: 0 0.01rem;">|</span>
+                  <span style="color: rgba(129,128,121,0.8)">1620 København V</span>
+                  <span style="color: rgb(0,102,158); margin: 0 0.01rem;">|</span>
+                  <span style="color: rgba(129,128,121,0.8)">
+                      <a target="_blank" href="https://www.dof.dk">www.dof.dk</a>
+                  </span>
+              </div>
+          </td>
+      </tr>
+  </table>
+</div>
+<div style="width:100%;height:250px" *ngIf="showexport">
+  <textarea style="width:100%;height:250px" id="exporthtml">{{htmlexport}}</textarea>
+  <label for="exporthtml">Kopier indholdet af denne tekstboks til dit email-programs signatur værktøj. Husk at indstille signaturen som HTML format.</label>
+</div>
+<!--end Result-->
