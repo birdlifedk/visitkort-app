@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     sender_position_english: "",
     sender_telephone_direct: "",
     sender_skypeid: "",
+    sender_email: ""
   };
 
   ngOnInit(): void {
@@ -30,10 +31,11 @@ export class AppComponent implements OnInit {
     this.showedit = true;
     this.card = {
       sender_name: "Toke F. Nyborg",
-      sender_position_native: "International medarbejder, naturpolitik & fundraising",
-      sender_position_english: "International Officer, policy Advocacy & Fundraising",
-      sender_telephone_direct: "+45 33283810",
+      sender_position_native: "International naturpolitik & fundraising",
+      sender_position_english: "International Policy Advocacy & Fundraising",
+      sender_telephone_direct: "+45 3328 3810",
       sender_skypeid: "tokenyborg",
+      sender_email: "toke.nyborg@dof.dk"
     };
   }
 
@@ -44,7 +46,8 @@ export class AppComponent implements OnInit {
       sender_position_native: "",
       sender_position_english: "",
       sender_telephone_direct: "",
-      sender_skypeid: ""
+      sender_skypeid: "",
+      sender_email: ""
     };
   };
 

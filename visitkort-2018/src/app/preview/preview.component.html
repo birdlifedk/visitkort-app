@@ -1,0 +1,68 @@
+<!-- Result -->
+<div style="margin-top:1.0rem;font-size: 10pt;font-family: Segoe UI, Verdana, sans-serif;" id="signature">
+    <table style="width: 650px;">
+        <colgroup>
+            <col>
+            <col style="width: 99%" />
+        </colgroup>
+        <tr>
+            <!-- First cell is a 1x3 cell-->
+            <td rowspan="3">
+                <img src="https://integration.dof.dk/visitkort-2018/assets/dof.png" style="height: 225px; padding-right: 35px" />
+            </td>
+            <td>
+                <span style="font-weight: bold;" id="sender_name">{{card.sender_name}}</span>
+                <br />
+                <span>{{card.sender_position_native}}</span>
+                <br />
+                <span>{{card.sender_position_english}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>T: +45 3328 3800</span>
+                <span *ngIf="card.sender_telephone_direct">
+                    <br />
+                    <span>D: {{card.sender_telephone_direct}}</span>
+                </span>
+                
+                <span *ngIf="card.sender_skypeid">
+                    <br />
+                    <span>S: {{card.sender_skypeid}}</span>
+                </span>
+
+                <span *ngIf="card.sender_email">
+                    <br/>
+                    <span>E: {{card.sender_email}}</span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <a href="https://www.facebook.com/birdlifedk"><img src="https://integration.dof.dk/visitkort-2018/assets/facebook.png"
+                            height="24px" width="24px" /></a>
+                    &nbsp;
+                    <a href="https://www.instagram.com/danmarksfugle"><img src="https://integration.dof.dk/visitkort-2018/assets/instagram.png"
+                            height="24px" width="24px" /></a>
+                    &nbsp;
+                    <a href="https://www.youtube.com/user/DOFBirdlife"><img src="https://integration.dof.dk/visitkort-2018/assets/youtube.png"
+                            height="24px" width="24px" /></a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div>
+                    <span>Vesterbrogade 138-140</span>
+                    &nbsp;&nbsp;
+                    <span>1620 København V</span>
+                    &nbsp;&nbsp;
+                    <span><a href="mailto:dof@dof.dk">dof@dof.dk</a></span>
+                    &nbsp;&nbsp;
+                    <span><a target="_blank" href="https://www.dof.dk">www.dof.dk</a></span>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
