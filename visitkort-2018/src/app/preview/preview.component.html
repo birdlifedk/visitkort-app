@@ -1,50 +1,46 @@
 <!-- Result -->
 <div style="margin-top:1.0rem;font-size: 10pt;font-family: Segoe UI, Verdana, sans-serif;" id="signature">
-    <table style="width: 650px;">
+    <table>
         <colgroup>
-            <col>
-            <col style="width: 99%" />
+            <col width=96 style="width: 100px;">
+            <col style="text-align: left;"/>
         </colgroup>
         <tr>
             <!-- First cell is a 1x3 cell-->
-            <td rowspan="3">
-                <img src="https://integration.dof.dk/visitkort-2018/assets/small/dof.png" style="padding-right: 35px" />
+            <td rowspan="3" width=96>
+                <img src="https://integration.dof.dk/visitkort-2018/assets/small/dof.png" style="padding-right: 20px;" />
             </td>
             <td>
-                <span style="font-weight: bold;" id="sender_name">{{card.sender_name | uppercase}}</span>
+                <span style="font-weight: bold; display: inline-block;" id="sender_name">{{card.sender_name | uppercase}}</span>
                 <br />
-                <span>{{card.sender_position_native}}</span>
+                <span style="font-style: italic; display: inline-block;"> {{card.sender_position_native}}</span>
                 <br />
-                <span>{{card.sender_position_english}}</span>
+                <span style="font-style: italic; display: inline-block;"> {{card.sender_position_english}}</span>
             </td>
         </tr>
         <tr>
             <td>
                 <span>T: +45 3328 3800</span>
-                <span *ngIf="card.sender_telephone_direct">
-                    <br />
-                    <span>D: {{card.sender_telephone_direct}}</span>
-                </span>
-                
-                <span *ngIf="card.sender_skypeid">
-                    <br />
-                    <span>S: {{card.sender_skypeid}}</span>
-                </span>
+                <br />
 
-                <span *ngIf="card.sender_email">
-                    <br/>
-                    <span>E: {{card.sender_email}}</span>
+                <span style="display: inline-block;">
+                    <span *ngIf="card.sender_telephone_direct">D: {{card.sender_telephone_direct}}</span>
+                </span>
+                <br />
+
+                <span style="display: inline-block;">
+                    <span *ngIf="card.sender_skypeid">S: {{card.sender_skypeid}}</span>
                 </span>
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="vertical-align: bottom; padding-bottom: 12px;">
                 <div>
-                    <a href="https://www.facebook.com/birdlifedk"><img src="https://integration.dof.dk/visitkort-2018/assets/small/facebook.png"/></a>
+                    <a href="https://www.facebook.com/birdlifedk"><img src="https://integration.dof.dk/visitkort-2018/assets/small/facebook.png" /></a>
                     &nbsp;
-                    <a href="https://www.instagram.com/danmarksfugle"><img src="https://integration.dof.dk/visitkort-2018/assets/small/instagram.png"/></a>
+                    <a href="https://www.instagram.com/danmarksfugle"><img src="https://integration.dof.dk/visitkort-2018/assets/small/instagram.png" /></a>
                     &nbsp;
-                    <a href="https://www.youtube.com/user/DOFBirdlife"><img src="https://integration.dof.dk/visitkort-2018/assets/small/youtube.png"/></a>
+                    <a href="https://www.youtube.com/user/DOFBirdlife"><img src="https://integration.dof.dk/visitkort-2018/assets/small/youtube.png" /></a>
                 </div>
             </td>
         </tr>

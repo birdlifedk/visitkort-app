@@ -19,8 +19,7 @@ export class AppComponent implements OnInit {
     sender_position_native: "",
     sender_position_english: "",
     sender_telephone_direct: "",
-    sender_skypeid: "",
-    sender_email: ""
+    sender_skypeid: ""
   };
 
   ngOnInit(): void {
@@ -34,8 +33,7 @@ export class AppComponent implements OnInit {
       sender_position_native: "International naturpolitik & fundraising",
       sender_position_english: "International Policy Advocacy & Fundraising",
       sender_telephone_direct: "+45 3328 3810",
-      sender_skypeid: "tokenyborg",
-      sender_email: "toke.nyborg@dof.dk"
+      sender_skypeid: "tokenyborg"
     };
   }
 
@@ -46,8 +44,7 @@ export class AppComponent implements OnInit {
       sender_position_native: "",
       sender_position_english: "",
       sender_telephone_direct: "",
-      sender_skypeid: "",
-      sender_email: ""
+      sender_skypeid: ""
     };
   };
 
