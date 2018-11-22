@@ -1,85 +1,145 @@
 <style>
   .card {
-      margin-top: 1.0rem;
-      font-size: 10pt;
-      font-family: Segoe UI, Verdana, sans-serif;
-      min-width: 33%;
-      max-width: 49%;
-      float: left;
-      border-right: 1px solid rgb(129, 128, 121);
-      margin-right: 30px;
+    margin-top: 1rem;
+    font-size: 10pt;
+    font-family: Segoe UI, Verdana, sans-serif;
+    min-width: 33%;
+    max-width: 49%;
+    float: left;
+    border-right: 1px solid rgb(129, 128, 121);
+    margin-right: 30px;
   }
 
   .regards {
-      margin-bottom: 0.9rem;
-      font-size: 0.9rem;
+    margin-bottom: 0.9rem;
+    font-size: 0.9rem;
   }
 
   .light {
-      color: rgb(129, 128, 121)
+    color: rgb(129, 128, 121);
   }
 
   .lighter {
-      color: rgba(129, 128, 121, 0.8)
+    color: rgba(129, 128, 121, 0.8);
   }
 
   .senderdetails_left {
-      float: left;
-      padding-right: 0.9rem;
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
+    float: left;
+    padding-right: 0.9rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
   }
 
   .senderdetails_right {
-      float: left;
-      margin-left: 0.9rem;
-      font-size: 0.9rem;
-      border-left: 1px solid rgb(129, 128, 121);
+    float: left;
+    margin-left: 0.9rem;
+    font-size: 0.9rem;
+    border-left: 1px solid rgb(129, 128, 121);
   }
 </style>
 <br />
 <button (click)="viewExample()">Vis eksempel</button>
 <button (click)="edit()">Ny formular</button>
-<button (click)="export()">Vis HTML</button>
-<br />
-<hr>
+<button (click)="export()">Vis HTML</button> <br />
+<hr />
 <!-- Form -->
 <div id="editor" class="card" *ngIf="showedit">
-  <div style="margin-bottom:0.9rem;font-size: 0.9rem;" class="regards light"></div>
+  <div
+    style="margin-bottom:0.9rem;font-size: 0.9rem;"
+    class="regards light"
+  ></div>
   <span class="senderdetails_left">
-      <div class="light">
-          <input [(ngModel)]="card.sender_name" size="50" placeholder="Navn">
-      </div>
-      <div class="light">
+    <table>
+      <tr>
+        <td>
+          <div class="light"><label>Navn:</label></div>
+        </td>
+        <td>
+          <div class="light">
+            <input
+              [(ngModel)]="card.sender_name"
+              size="50"
+              placeholder="Navn"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="light"><label>Stilling:</label></div>
+        </td>
+        <td>
+          <div class="light">
+            <input
+              [(ngModel)]="card.sender_position_native"
+              size="50"
+              placeholder="Stilling"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="lighter"><label>Stilling (Engelsk):</label></div>
+        </td>
+        <td>
+          <div class="lighter">
+            <input
+              [(ngModel)]="card.sender_position_english"
+              size="50"
+              placeholder="Stilling (Engelsk)"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="light"><label>Direkte telefon</label></div>
+        </td>
+        <td>
+          <div class="light">
+            <input
+              [(ngModel)]="card.sender_telephone_direct"
+              size="50"
+              placeholder="Direkte telefonnummer"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="light"><label>Skype ID:</label></div>
+        </td>
+        <td>
+          <div class="light">
+            <input
+              [(ngModel)]="card.sender_skypeid"
+              size="50"
+              placeholder="Skype ID"
+            />
+          </div>
+        </td>
+      </tr>
+    </table>
 
-          <input [(ngModel)]="card.sender_position_native" size="50" placeholder="Stilling">
-      </div>
-      <div class="lighter">
-          <input [(ngModel)]="card.sender_position_english" size="50" placeholder="Stilling (Engelsk)">
-      </div>
-      <div class="light">
-          <input [(ngModel)]="card.sender_telephone_direct" placeholder="Direkte telefonnummer">
-      </div>
-      <div class="light">
-          <input [(ngModel)]="card.sender_skypeid" size="50" placeholder="Skype ID">
-      </div>
-      <div class="light">
-          <input [(ngModel)]="card.sender_email" size="50" placeholder="E-mailadresse">
-      </div>
-      <br/>
-      <br/>
-      <button (click)="copy_text()">Kopier til udklipsholder</button>
-      <br/>
-      <br/>
-      <div *ngIf="showcopyalert">Signatur kopieret</div>
+    <br />
+    <br />
+    <button (click)="copy_text()">Kopier til udklipsholder</button> <br />
+    <br />
+    <div *ngIf="showcopyalert">Signatur kopieret</div>
   </span>
 </div>
-<!--end Form-->
+<!-- end Form -->
 
 <app-preview [card]="card"></app-preview>
 
 <div style="width:100%;height:250px" *ngIf="showexport">
-  <textarea style="width:100%;height:250px" id="exporthtml">{{htmlexport}}</textarea>
-  <label for="exporthtml">Kopier indholdet af denne tekstboks til dit email-programs signatur værktøj. Husk at indstille signaturen som HTML format.</label>
+  <textarea style="width:100%;height:250px" id="exporthtml">
+    {{ htmlexport }}</textarea
+  >
+  <label for="exporthtml"
+    >Kopier indholdet af denne tekstboks til dit email-programs signatur
+    værktøj. Husk at indstille signaturen som HTML format.</label
+  >
 </div>
-<!--end Result-->
+<!-- end Result -->
