@@ -1,6 +1,5 @@
 <!-- Result -->
 <div style="margin-top:1.0rem;font-size: 10pt;font-family: Segoe UI, Verdana, sans-serif;" id="signature">
-    <style>a:visited { color: #818079; } a {color: #818079; }</style>
     <table>
         <colgroup>
             <col width=96 style="width: 100px;">
@@ -9,33 +8,31 @@
         <tr>
             <!-- First cell is a 1x3 cell-->
             <td rowspan="3" width=96>
-                <img src="https://integration.dof.dk/visitkort-2018/assets/small/dof.png" style="padding-right: 20px;" />
+                <img src="https://integration.dof.dk/visitkort-2018/assets/small/dof.png"/>
             </td>
             <td>
-                <span style="font-weight: bold; display: inline-block;" id="sender_name">{{card.sender_name | uppercase}}</span>
+                <span style="font-weight: bold; display: inline-block; font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;">{{card.sender_name | uppercase}}</span>
                 <br />
-                <span style="display: inline-block; color:#818079"> {{card.sender_position_native}}</span>
+                <span style="display: inline-block; color:#818079; font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;"> {{card.sender_position_native}}</span>
                 <br />
-                <span style="display: inline-block; color: #818079"> {{card.sender_position_english}}</span>
+                <span style="display: inline-block; color: #818079; font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;"> {{card.sender_position_english}}</span>
             </td>
         </tr>
         <tr>
             <td>
-                <span>T: +45 3328 3800</span>
+                <span style="font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;">T: +45 3328 3800</span>
                 <br />
-
                 <span style="display: inline-block;">
-                    <span *ngIf="card.sender_telephone_direct">D: {{card.sender_telephone_direct}}</span>
+                    <span *ngIf="card.sender_telephone_direct" style="font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;">D: {{card.sender_telephone_direct}}</span>
                 </span>
                 <br />
-
                 <span style="display: inline-block;">
-                    <span *ngIf="card.sender_skypeid">S: {{card.sender_skypeid}}</span>
+                    <span *ngIf="card.sender_skypeid" style="font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;">S: {{card.sender_skypeid}}</span>
                 </span>
             </td>
         </tr>
         <tr>
-            <td style="vertical-align: bottom; padding-bottom: 10px;">
+            <td style="vertical-align: bottom;">
                 <div>
                     <a href="https://www.facebook.com/birdlifedk"><img src="https://integration.dof.dk/visitkort-2018/assets/small/facebook.png"/></a>
                     &nbsp;
@@ -44,19 +41,18 @@
                     <a href="https://www.youtube.com/user/DOFBirdlife"><img src="https://integration.dof.dk/visitkort-2018/assets/small/youtube.png"/></a>
                 </div>
             </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <div style="color:#818079">
-                    <span>Vesterbrogade 138-140</span>
-                    <span style="margin-left: 0.5em; margin-right: 0.5em;">|</span>
-                    <span>1620 København V</span>
-                    <span style="margin-left: 0.5em; margin-right: 0.5em;">|</span>
-                    <span><a href="mailto:dof@dof.dk">dof@dof.dk</a></span>
-                    <span style="margin-left: 0.5em; margin-right: 0.5em;">|</span>
-                    <span><a target="_blank" href="https://www.dof.dk">www.dof.dk</a></span>
-                </div>
-            </td>
-        </tr>
+        </tr>        
     </table>
+            
+    <div style="margin-top: 5px">
+        <style>a:visited { color: #818079; } a {color: #818079; }</style>
+        <span style="color:#818079; font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;">Vesterbrogade 138-140 | 1620 København V | </span>
+        <a href="mailto:dof@dof.dk" style="font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;">
+            <font color="#818079">dof@dof.dk</font>
+        </a>
+        <span style="color:#818079; font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;"> | </span>
+        <a target="_blank" href="https://www.dof.dk" style="font-size: 10pt; font-family: Segoe UI, Verdana, sans-serif;">
+            <font color="#818079">www.dof.dk</font>
+        </a>
+    </div>
 </div>
